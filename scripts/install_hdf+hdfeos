@@ -224,7 +224,7 @@ libbasename=`basename $hdffile .tar.gz`
 cd /tmp/Mtk.$$
 tar xzvf $hdffile
 cd /tmp/Mtk.$$/$libbasename
-./configure CFLAGS="-O2 -fPIC -fno-common $arch_flags" LDFLAGS="$mathlib" --disable-dependency-tracking --disable-fortran --prefix=$installdir --with-zlib=$installdir --with-jpeg=$installdir --disable-netcdf --disable-shared
+./configure CFLAGS="-O2 -fPIC -fno-common $arch_flags -Wno-error=implicit-function-declaration" LDFLAGS="$mathlib" --disable-dependency-tracking --disable-fortran --prefix=$installdir --with-zlib=$installdir --with-jpeg=$installdir --disable-netcdf --disable-shared
 make 
 make check
 make install
@@ -265,7 +265,7 @@ libbasename=`basename $hdfeosfile .tar.Z`
 cd /tmp/Mtk.$$
 tar xzvf $hdfeosfile
 cd /tmp/Mtk.$$/hdfeos
-./configure --with-pic --prefix=$installdir --enable-install-include --with-jpeg=$installdir --with-zlib=$installdir --with-hdf4=$installdir
+./configure CFLAGS="-Wno-error=implicit-function-declaration" --with-pic --prefix=$installdir --enable-install-include --with-jpeg=$installdir --with-zlib=$installdir --with-hdf4=$installdir
 make
 make install
 
