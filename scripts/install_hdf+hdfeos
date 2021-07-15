@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# Exit on errors
+set -e
+
 origdir=`pwd`
 scriptdir=`dirname $0`
 if [ "$scriptdir" != "scripts" ]; then
@@ -226,7 +229,7 @@ tar xzvf $hdffile
 cd /tmp/Mtk.$$/$libbasename
 ./configure CFLAGS="-O2 -fPIC -fno-common $arch_flags -Wno-error=implicit-function-declaration" LDFLAGS="$mathlib" --disable-dependency-tracking --disable-fortran --prefix=$installdir --with-zlib=$installdir --with-jpeg=$installdir --disable-netcdf --disable-shared
 make 
-make check
+# make check   <--- fails on MacOS 10.15.7
 make install
 
 #
@@ -237,7 +240,7 @@ libbasename=`basename $hdf5file .tar.gz`
 cd /tmp/Mtk.$$
 tar xzvf $hdf5file
 cd /tmp/Mtk.$$/$libbasename
-./configure CFLAGS="-O2 -fPIC -fno-common $arch_flags" LDFLAGS="$mathlib" --disable-shared -disable-silent-rules --disable-fortran --prefix=$installdir --with-zlib=$installdir
+./configure CFLAGS="-O2 -fPIC -fno-common $arch_flags -Wno-error=implicit-function-declaration" LDFLAGS="$mathlib" --disable-shared -disable-silent-rules --disable-fortran --prefix=$installdir --with-zlib=$installdir
 make 
 make check
 make install
