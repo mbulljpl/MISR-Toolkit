@@ -87,7 +87,7 @@ done
 # Select zlib
 #
 
-default_zlibfile="${libdir}/zlib-1.2.5.tar.gz"
+default_zlibfile="${libdir}/zlib-1.2.11.tar.gz"
 zlibfile=""
 while [ ! -f "$zlibfile" ]; do
     /bin/echo -n "Enter zlib library directory/file ($default_zlibfile): "
@@ -199,7 +199,7 @@ libbasename=`basename $zlibfile .tar.gz`
 cd /tmp/Mtk.$$
 tar xzvf $zlibfile
 cd /tmp/Mtk.$$/$libbasename
-CFLAGS="-O2 -fPIC -fno-common $arch_flags" ./configure --prefix=$installdir
+CFLAGS="-O2 -fPIC -fno-common $arch_flags" ./configure --prefix=$installdir --static
 make
 make test
 make install

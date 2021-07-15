@@ -32,7 +32,7 @@ fi
 #
 
 cd $libdir
-curl -L -O https://observer.gsfc.nasa.gov/ftp/edhs/hdfeos/previous_releases/zlib-1.2.5.tar.gz
+curl -L -O https://zlib.net/zlib-1.2.11.tar.gz
 curl -L -O https://observer.gsfc.nasa.gov/ftp/edhs/hdfeos/previous_releases/jpegsrc.v6b.tar.gz
 curl -L -O https://support.hdfgroup.org/ftp/HDF/releases/HDF4.2.10/src/hdf-4.2.10.tar.gz
 curl -L -O https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.16/src/hdf5-1.8.16.tar.gz
