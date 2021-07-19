@@ -29,7 +29,7 @@ ifeq ("$(ARCH)","Darwin x86_64")
   IDL_DIR ?=    $(shell dirname $$(dirname $$(find /Applications/harris /Applications/exelis /Applications/rsi -type f -name idl -print -quit)))
   DOXYDIR ?=	/Applications/Doxygen/Doxygen.app/Contents/Resources
   PYDOCDIR?=    /usr/local/bin
-  ARCH_CFLAGS:=	-arch x86_64
+  ARCH_CFLAGS:=	-arch x86_64 -mmacosx-version-min=10.11.2
   IDL_MODE:=
   IDL_CFLAGS := -Wno-macro-redefined
   IDL_LDFLAGS:=

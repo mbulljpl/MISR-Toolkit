@@ -199,7 +199,7 @@ libbasename=`basename $zlibfile .tar.gz`
 cd /tmp/Mtk.$$
 tar xzvf $zlibfile
 cd /tmp/Mtk.$$/$libbasename
-CFLAGS="-O2 -fPIC -fno-common $arch_flags" ./configure --prefix=$installdir --static
+CFLAGS="-mmacosx-version-min=10.11.2 -O2 -fPIC -fno-common $arch_flags" ./configure --prefix=$installdir --static
 make
 make test
 make install
@@ -213,7 +213,7 @@ libbasename=`/bin/echo $libbasename | sed 's/src.v/-/'`
 cd /tmp/Mtk.$$
 tar xzvf $jpegfile
 cd /tmp/Mtk.$$/$libbasename
-./configure CFLAGS="-O2 -fPIC -fno-common $arch_flags" LDFLAGS="$arch_flags" --prefix=$installdir
+./configure CFLAGS="-mmacosx-version-min=10.11.2 -O2 -fPIC -fno-common $arch_flags" LDFLAGS="$arch_flags" --prefix=$installdir
 make test
 make install
 make install-lib
@@ -227,7 +227,7 @@ libbasename=`basename $hdffile .tar.gz`
 cd /tmp/Mtk.$$
 tar xzvf $hdffile
 cd /tmp/Mtk.$$/$libbasename
-./configure CFLAGS="-O2 -fPIC -fno-common $arch_flags -Wno-error=implicit-function-declaration" LDFLAGS="$mathlib" --disable-dependency-tracking --disable-fortran --prefix=$installdir --with-zlib=$installdir --with-jpeg=$installdir --disable-netcdf --disable-shared
+./configure CFLAGS="-mmacosx-version-min=10.11.2 -O2 -fPIC -fno-common $arch_flags -Wno-error=implicit-function-declaration" LDFLAGS="$mathlib" --disable-dependency-tracking --disable-fortran --prefix=$installdir --with-zlib=$installdir --with-jpeg=$installdir --disable-netcdf --disable-shared
 make 
 # make check   <--- fails on MacOS 10.15.7
 make install
@@ -240,7 +240,7 @@ libbasename=`basename $hdf5file .tar.gz`
 cd /tmp/Mtk.$$
 tar xzvf $hdf5file
 cd /tmp/Mtk.$$/$libbasename
-./configure CFLAGS="-O2 -fPIC -fno-common $arch_flags -Wno-error=implicit-function-declaration" LDFLAGS="$mathlib" --disable-shared -disable-silent-rules --disable-fortran --prefix=$installdir --with-zlib=$installdir
+./configure CFLAGS="-mmacosx-version-min=10.11.2 -O2 -fPIC -fno-common $arch_flags -Wno-error=implicit-function-declaration" LDFLAGS="$mathlib" --disable-shared -disable-silent-rules --disable-fortran --prefix=$installdir --with-zlib=$installdir
 make 
 make check
 make install
@@ -255,7 +255,7 @@ libbasename=`basename $netcdffile .tar.gz`
 cd /tmp/Mtk.$$
 tar xzvf $netcdffile
 cd /tmp/Mtk.$$/$libbasename
-./configure CFLAGS="-O2 -fPIC -fno-common $arch_flags -I${HDF5INC}" LDFLAGS="-L${HDF5LIB} $mathlib" --disable-shared --enable-static --disable-dap --enable-netcdf4 --prefix=$installdir
+./configure CFLAGS="-mmacosx-version-min=10.11.2 -O2 -fPIC -fno-common $arch_flags -I${HDF5INC}" LDFLAGS="-L${HDF5LIB} $mathlib" --disable-shared --enable-static --disable-dap --enable-netcdf4 --prefix=$installdir
 make
 make check
 make install
@@ -268,7 +268,7 @@ libbasename=`basename $hdfeosfile .tar.Z`
 cd /tmp/Mtk.$$
 tar xzvf $hdfeosfile
 cd /tmp/Mtk.$$/hdfeos
-./configure CFLAGS="-Wno-error=implicit-function-declaration" --with-pic --prefix=$installdir --enable-install-include --with-jpeg=$installdir --with-zlib=$installdir --with-hdf4=$installdir
+./configure CFLAGS="-mmacosx-version-min=10.11.2 -Wno-error=implicit-function-declaration" --with-pic --prefix=$installdir --enable-install-include --with-jpeg=$installdir --with-zlib=$installdir --with-hdf4=$installdir
 make
 make install
 
